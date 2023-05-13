@@ -1,0 +1,10 @@
+transformers
+openai
+git+git://github.com/openai/whisper.git 
+datasets
+soundfile
+librosa
+ffmpeg-python
+opencv-python
+reportlab
+pytest
