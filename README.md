@@ -9,14 +9,6 @@ Python library to summarize talks. Turn a video file into a PDF report with a su
 - uses `OpenCV` to identify slide transitions and extract slides
 - uses `OpenAI` to summarize each section
 
-```bash
-python talk_summarizer/summarize_talk.py \
-    --output_dir output \
-    --video_file video.mp4 \
-    --no-summarize \
-    --whisper_model tiny
-```
-
 ## Installation
 
 Install this library using `pip`:
@@ -25,7 +17,13 @@ Install this library using `pip`:
 
 ## Usage
 
-Usage instructions go here.
+```bash
+python talk_summarizer/summarize_talk.py \
+    --output_dir output \
+    --video_file video.mp4 \
+    --no-summarize \
+    --whisper_model tiny
+```
 
 ## Development
 
