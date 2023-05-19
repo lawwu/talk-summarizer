@@ -32,7 +32,9 @@ def main(video_file, output_dir, summarize=False, whisper_model="tiny"):
     audio_file = extract_audio(video_file, "audio.mp3")
 
     # Transcribe audio
-    transcript = transcribe_audio(audio_file, model=whisper_model, output_dir=output_dir)
+    transcript = transcribe_audio(
+        audio_file, model=whisper_model, output_dir=output_dir
+    )
 
     # Extract slides from video
     slide_transitions = extract_slides(video_file, output_dir)
@@ -56,24 +58,34 @@ def main(video_file, output_dir, summarize=False, whisper_model="tiny"):
     # Create a PDF report with slide images and summaries
     slide_images = sorted(output_dir.glob("*.png"))
     report_filename = os.path.join(output_dir, "report.pdf")
-    generate_pdf_report(report_filename, 
-                        overall_summary, 
-                        slide_images, 
-                        summarized_sections, 
-                        section_transcripts,
-                        summarize=summarize)
-    
+    generate_pdf_report(
+        report_filename,
+        overall_summary,
+        slide_images,
+        summarized_sections,
+        section_transcripts,
+        summarize=summarize,
+    )
+
 
 if __name__ == "__main__":
     import argparse
 
     parser = argparse.ArgumentParser(description="Summarize a lecture video")
     parser.add_argument("--video_file", help="Path to the video file")
-    parser.add_argument("--output_dir", default="output", help="Path to the output directory")
-    parser.add_argument("--summarize", 
-                        action=argparse.BooleanOptionalAction, 
-                        help="Summarize the sections (default: False)")
-    parser.add_argument("--whisper_model", default="medium", help="Whisper model to use (default: medium)")    
+    parser.add_argument(
+        "--output_dir", default="output", help="Path to the output directory"
+    )
+    parser.add_argument(
+        "--summarize",
+        action=argparse.BooleanOptionalAction,
+        help="Summarize the sections (default: False)",
+    )
+    parser.add_argument(
+        "--whisper_model",
+        default="medium",
+        help="Whisper model to use (default: medium)",
+    )
     args = parser.parse_args()
 
     main(args.video_file, args.output_dir, args.summarize, args.whisper_model)
