@@ -63,3 +63,4 @@ export OPENAI_API_KEY=sk-1234...
 - [ ] get output directory working (ffmpeg not working with output directory)
 - [ ] create different tasks like `transcribe` (video --> audio, transcript, overall summary). Right now `summarize_talk` works on a video (video with slides --> audio, slide images, transcript, section summaries, overall summary, report)
 - [ ] add more unit tests
+- [ ] use `pyproject.toml` instead of `setup.py`

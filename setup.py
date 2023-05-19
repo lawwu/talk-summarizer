@@ -1,7 +1,7 @@
 from setuptools import setup
 import os
 import pkg_resources
-from setuptools import find_packages, setup
+from pathlib import Path
 
 VERSION = "0.0.1"
 
@@ -13,6 +13,12 @@ def get_long_description():
     ) as fp:
         return fp.read()
 
+
+with Path("requirements.txt").open() as requirements_txt:
+    install_requires = [
+        str(requirement)
+        for requirement in pkg_resources.parse_requirements(requirements_txt)
+    ]
 
 setup(
     name="talk-summarizer",
@@ -29,12 +35,7 @@ setup(
     license="Apache License, Version 2.0",
     version=VERSION,
     packages=["talk_summarizer"],
-    install_requires=[
-        str(r)
-        for r in pkg_resources.parse_requirements(
-            open(os.path.join(os.path.dirname(__file__), "requirements.txt"))
-        )
-    ],
+    install_requires=install_requires,
     extras_require={"test": ["pytest"]},
     python_requires=">=3.9",
 )
