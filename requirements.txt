@@ -1,6 +1,6 @@
 transformers
 openai
-git+git://github.com/openai/whisper.git
+openai-whisper
 datasets
 soundfile
 librosa
@@ -8,5 +8,3 @@ ffmpeg-python
 opencv-python
 reportlab
 pytest
-black
-pre-commit
